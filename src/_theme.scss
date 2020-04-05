@@ -1,0 +1,6 @@
+@import "~@angular/material/theming";
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,400;0,500;1,400;1,500&display=swap");
+// Define a custom typography config that overrides the font-family
+$custom-typography: mat-typography-config(
+  $font-family: "Josefin Sans,sans-serif"
+);
