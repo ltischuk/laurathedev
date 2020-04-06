@@ -12,6 +12,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { UiComponentsModule } from './ui-components/ui-components.module';
 import { HomeModule } from './pages/home/home.module';
 import { AboutModule } from './pages/about/about.module';
+import { ContactModule } from './pages/contact/contact.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,6 +23,7 @@ import { AboutModule } from './pages/about/about.module';
     FlexLayoutModule,
     HomeModule,
     AboutModule,
+    ContactModule,
     StoreModule.forRoot({}, {}),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
