@@ -1,20 +1,44 @@
-/* You can add global styles to this file, and also import other style files */
-@import "@angular/material/prebuilt-themes/indigo-pink.css";
-@import "_theme.scss";
+@import 'theme.scss';
+
 html,
 body {
   height: 100%;
 }
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-  background: url("assets/app-background.jpg") no-repeat center fixed;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  background: url('assets/app-background.jpg') no-repeat center fixed;
   background-size: cover;
+}
+
+/*Common Styles for pages*/
+.center-page-margin {
+  margin-top: -7em;
+}
+.center-text {
+  text-align: center;
+}
+
+.italic-style {
+  font-style: italic;
 }
 
 .full-page-height {
   height: 100vh;
 }
 
-// Override the typography in the core CSS.
-@include mat-core($custom-typography);
+.white-text {
+  color: white;
+}
+
+.large {
+  font-size: large;
+}
+
+.xlarge {
+  font-size: x-large;
+}
+
+.xxlarge {
+  font-size: xxx-large;
+}

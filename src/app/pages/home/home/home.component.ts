@@ -5,7 +5,10 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
-  animations: [trigger('flyIn', [state('in', style({ transform: 'translateX(0)' })), transition('void => *', [style({ transform: 'translateX(-100%)' }), animate('900ms ease-in')])])],
+  animations: [
+    trigger('flyIn', [state('in', style({ transform: 'translateX(0)' })), transition('void => *', [style({ transform: 'translateX(-100%)' }), animate('1000ms')])]),
+    trigger('fade', [transition('void => *', [style({ opacity: 0 }), animate('2000ms 1500ms', style({ opacity: 1 }))])]),
+  ],
 })
 export class HomeComponent implements OnInit {
   constructor() {}

@@ -11,6 +11,7 @@ import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { UiComponentsModule } from './ui-components/ui-components.module';
 import { HomeModule } from './pages/home/home.module';
+import { AboutModule } from './pages/about/about.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,6 +21,7 @@ import { HomeModule } from './pages/home/home.module';
     BrowserAnimationsModule,
     FlexLayoutModule,
     HomeModule,
+    AboutModule,
     StoreModule.forRoot({}, {}),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
