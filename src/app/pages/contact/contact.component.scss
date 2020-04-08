@@ -1,0 +1,15 @@
+mat-card {
+  background: rgba(0, 0, 0, 0.4);
+  max-width: 65%;
+}
+
+.contact-content {
+  display: inline-block;
+}
+
+a {
+  color: lightblue;
+  &:visited {
+    color: lightblue;
+  }
+}
