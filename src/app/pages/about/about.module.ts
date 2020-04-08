@@ -5,9 +5,10 @@ import { AboutRoutingModule } from './about-routing.module';
 import { AboutmeComponent } from './aboutme.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
   declarations: [AboutmeComponent],
-  imports: [CommonModule, AboutRoutingModule, FlexLayoutModule, MatCardModule],
+  imports: [CommonModule, AboutRoutingModule, FlexLayoutModule, MatCardModule, MatDividerModule],
 })
 export class AboutModule {}
