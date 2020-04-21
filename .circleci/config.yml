@@ -12,5 +12,5 @@ workflows:
         steps:
           - checkout
           - run:
-            name: Angular
-            command: 'sudo angular-cli@9.0.1 -g'
+              name: Angular
+              command: 'sudo angular-cli@9.0.1 -g'
