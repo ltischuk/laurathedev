@@ -9,7 +9,7 @@ jobs:
       - checkout
       - run:
           name: update angular cli
-          command: npm install -g @angular/cli
+          command: sudo npm install -g @angular/cli
       - run:
           name: build the dist
           command: ng build
