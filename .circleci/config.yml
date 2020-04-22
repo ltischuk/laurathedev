@@ -9,7 +9,7 @@ jobs:
       - checkout
       - run:
           name: run install and then build
-          command: npm i && run build
+          command: npm i && npm run build
 workflows:
   # Name the workflow "welcome"
   build-and-deploy:
