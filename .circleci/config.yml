@@ -8,11 +8,8 @@ jobs:
     steps:
       - checkout
       - run:
-          name: update angular cli
-          command: sudo npm install -g @angular/cli
-      - run:
-          name: build the dist
-          command: ng build
+          name: run install and then build
+          command: npm i && run build
 workflows:
   # Name the workflow "welcome"
   build-and-deploy:
