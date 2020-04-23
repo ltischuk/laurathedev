@@ -5,7 +5,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
   selector: 'app-contact',
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.scss'],
-  animations: [trigger('flyIn', [state('in', style({ transform: 'translateX(0)' })), transition('void => *', [style({ transform: 'translateX(-100%)' }), animate('1000ms')])])],
+  animations: [trigger('fade', [transition('void => *', [style({ opacity: 0 }), animate('2000ms 500ms', style({ opacity: 1 }))])])],
 })
 export class ContactComponent implements OnInit {
   constructor() {}

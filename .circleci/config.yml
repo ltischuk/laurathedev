@@ -23,7 +23,7 @@ jobs:
           command: |
             aws s3 sync ./dist/laurathedev/ s3://whointheworldislaurawebsite/ --delete
 workflows:
-  # Name the workflow "welcome"
+  # workflow for build and deploy
   build-and-deploy:
     # Run the build job in its own container
     jobs:
