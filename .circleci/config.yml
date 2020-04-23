@@ -21,8 +21,7 @@ jobs:
       - deploy:
           name: deploy to AWS
           command: |
-            aws s3 sync ./dist/
-            s3://whointheworldislaurawebsite/ --delete
+            aws s3 sync ./dist/ s3://whointheworldislaurawebsite/ --delete
 workflows:
   # Name the workflow "welcome"
   build-and-deploy:
