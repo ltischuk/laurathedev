@@ -2,7 +2,7 @@
 version: 2.1
 # Use a package of configuration called an orb.
 jobs:
-  build:
+  build-and-deploy:
     docker:
       - image: circleci/node:12.14.1
     steps:
@@ -10,9 +10,14 @@ jobs:
       - run:
           name: run install and then build
           command: npm i && npm run build
+      - deploy:
+          name: deploy to AWS
+          command: |
+            aws s3 sync ./dist/
+            s3://whointheworldislaurawebsite/ --delete
 workflows:
   # Name the workflow "welcome"
   build-and-deploy:
     # Run the build job in its own container
     jobs:
-      - build
+      - build-and-deploy
