@@ -17,7 +17,7 @@ jobs:
             pip install awscli --upgrade --user
       - run:
           name: run install and then build
-          command: npm i && npm run build
+          command: npm i && npm run build -- --prod
       - deploy:
           name: deploy to AWS
           command: |
