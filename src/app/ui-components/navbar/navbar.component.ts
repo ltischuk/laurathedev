@@ -1,15 +1,31 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit, signal } from '@angular/core';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
+  standalone: true,
+  imports: [RouterLink, RouterLinkActive],
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss']
+  styleUrl: './navbar.component.scss',
 })
 export class NavbarComponent implements OnInit {
+  scrolled = signal(false);
+  menuOpen = signal(false);
 
-  constructor() { }
-
-  ngOnInit(): void {
+  ngOnInit() {
+    this.scrolled.set(window.scrollY > 20);
   }
 
+  @HostListener('window:scroll')
+  onScroll() {
+    this.scrolled.set(window.scrollY > 20);
+  }
+
+  toggleMenu() {
+    this.menuOpen.update((v) => !v);
+  }
+
+  closeMenu() {
+    this.menuOpen.set(false);
+  }
 }

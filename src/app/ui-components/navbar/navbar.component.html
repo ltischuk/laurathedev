@@ -1,20 +1,27 @@
-<mat-toolbar>
-  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Menu Button">
-    <mat-icon>menu</mat-icon>
-  </button>
-  <span id="nav-title" class="white-text">Laura Holbrook</span>
-  <mat-menu #menu="matMenu">
-    <button routerLink="/home" routerLinkActive="active" mat-menu-item>
-      <mat-icon>home</mat-icon>
-      <span>Home</span>
+<nav [class.scrolled]="scrolled()">
+  <div class="nav-inner">
+    <a routerLink="/home" class="nav-logo" (click)="closeMenu()">
+      <span class="logo-text">Laura Hamczyk</span>
+    </a>
+
+    <button
+      class="menu-toggle"
+      (click)="toggleMenu()"
+      [attr.aria-expanded]="menuOpen()"
+      aria-label="Toggle navigation menu"
+    >
+      <span class="hamburger" [class.open]="menuOpen()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
     </button>
-    <button routerLink="/about" routerLinkActive="active" mat-menu-item>
-      <mat-icon>face</mat-icon>
-      <span>About Me</span>
-    </button>
-    <button routerLink="/contact" routerLinkActive="active" mat-menu-item>
-      <mat-icon>email</mat-icon>
-      <span>Contact</span>
-    </button>
-  </mat-menu>
-</mat-toolbar>
+
+    <div class="nav-links" [class.open]="menuOpen()">
+      <a routerLink="/home" routerLinkActive="active" (click)="closeMenu()">Home</a>
+      <a routerLink="/projects" routerLinkActive="active" (click)="closeMenu()">Work</a>
+      <a routerLink="/about" routerLinkActive="active" (click)="closeMenu()">About</a>
+      <a routerLink="/contact" routerLinkActive="active" (click)="closeMenu()">Contact</a>
+    </div>
+  </div>
+</nav>

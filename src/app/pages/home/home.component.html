@@ -1,7 +1,19 @@
-<div class="full-page-height center-page-margin" fxLayout="column" fxLayoutAlign="center center">
-  <p @flyIn class="white-text italic-style" ngClass="xxlarge" ngClass.xs="xlarge">Passionate Leader.</p>
-  <mat-divider @fade class="dividing-border"></mat-divider>
-  <p @flyIn class="white-text italic-style" ngClass="xxlarge" ngClass.xs="xlarge">Software Architect.</p>
-  <mat-divider @fade class="dividing-border"></mat-divider>
-  <p @flyIn class="white-text italic-style" ngClass="xxlarge" ngClass.xs="xlarge">Innovator.</p>
-</div>
+<section class="hero">
+  <div class="hero-content">
+    <p class="hero-eyebrow animate-in" style="--delay: 0ms">Hi, I'm</p>
+    <h1 class="hero-name animate-in" style="--delay: 150ms">Laura</h1>
+    <div class="hero-tags animate-in" style="--delay: 350ms">
+      @for (tag of tags; track tag) {
+        <span class="tag">{{ tag }}</span>
+      }
+    </div>
+    <div class="hero-actions animate-in" style="--delay: 550ms">
+      <a routerLink="/projects" class="btn btn-primary">View My Work</a>
+      <a routerLink="/about" class="btn btn-ghost">About Me</a>
+    </div>
+  </div>
+
+  <div class="scroll-indicator" aria-hidden="true">
+    <div class="scroll-line"></div>
+  </div>
+</section>

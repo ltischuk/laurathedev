@@ -1,17 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { trigger, state, style, transition, animate } from '@angular/animations';
+import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
+  standalone: true,
+  imports: [RouterLink],
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
-  animations: [
-    trigger('flyIn', [state('in', style({ transform: 'translateX(0)' })), transition('void => *', [style({ transform: 'translateX(-100%)' }), animate('1000ms')])]),
-    trigger('fade', [transition('void => *', [style({ opacity: 0 }), animate('2000ms 1500ms', style({ opacity: 1 }))])]),
-  ],
+  styleUrl: './home.component.scss',
 })
-export class HomeComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit(): void {}
+export class HomeComponent {
+  tags = ['Passionate Leader', 'Software Architect', 'Innovator'];
 }

@@ -1,18 +1,157 @@
-mat-card {
-  background: rgba(0, 0, 0, 0.4);
-  max-width: 65%;
+.about-section {
+  min-height: 100vh;
+  padding: 8rem 2rem 5rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
 }
 
-.about-text {
-  line-height: 1.25;
+.about-container {
+  max-width: 860px;
+  width: 100%;
+  animation: slide-up-fade 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
 }
 
-img {
-  width: 100px;
-  margin-right: 5px;
+@keyframes slide-up-fade {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.scrolling-content {
-  height: 75%;
-  overflow-y: auto;
+.section-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.section-label {
+  display: inline-block;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #a78bfa;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.section-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  font-weight: 700;
+  margin: 0;
+  background: linear-gradient(135deg, #fff 0%, #c4b5fd 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.035);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 28px;
+  padding: 3rem;
+  box-shadow:
+    0 30px 60px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.about-bio {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+
+  p {
+    color: rgba(241, 245, 249, 0.78);
+    font-size: 1.0625rem;
+    line-height: 1.85;
+  }
+}
+
+.tech-section {
+  margin-top: 2.75rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.tech-title {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #a78bfa;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin: 0 0 1.75rem;
+}
+
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(88px, 1fr));
+  gap: 1.25rem;
+}
+
+.tech-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.625rem;
+  cursor: default;
+
+  &:hover .tech-icon-wrap {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 10px 24px rgba(124, 58, 237, 0.4);
+    border-color: rgba(167, 139, 250, 0.5);
+    background: rgba(124, 58, 237, 0.15);
+  }
+
+  span {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.55);
+    text-align: center;
+    transition: color 0.25s ease;
+  }
+
+  &:hover span {
+    color: rgba(255, 255, 255, 0.85);
+  }
+}
+
+.tech-icon-wrap {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 16px;
+  padding: 12px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-section {
+    padding: 6rem 1.25rem 4rem;
+  }
+
+  .glass-card {
+    padding: 2rem 1.5rem;
+    border-radius: 20px;
+  }
+
+  .tech-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
 }

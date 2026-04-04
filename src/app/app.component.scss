@@ -1,1 +1,71 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  position: relative;
+}
 
+.bg-orbs {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  will-change: transform;
+  animation: float-orb ease-in-out infinite;
+}
+
+.orb-1 {
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle at center, rgba(124, 58, 237, 0.35) 0%, transparent 65%);
+  top: -250px;
+  left: -150px;
+  animation-duration: 28s;
+  animation-delay: 0s;
+}
+
+.orb-2 {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle at center, rgba(236, 72, 153, 0.25) 0%, transparent 65%);
+  bottom: -150px;
+  right: -100px;
+  animation-duration: 22s;
+  animation-delay: -8s;
+}
+
+.orb-3 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle at center, rgba(34, 211, 238, 0.15) 0%, transparent 65%);
+  top: 35%;
+  left: 38%;
+  animation-duration: 32s;
+  animation-delay: -16s;
+}
+
+@keyframes float-orb {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(40px, -35px) scale(1.04);
+  }
+  50% {
+    transform: translate(-25px, 45px) scale(0.96);
+  }
+  75% {
+    transform: translate(-45px, -20px) scale(1.02);
+  }
+}
+
+.page-content {
+  position: relative;
+  z-index: 1;
+}

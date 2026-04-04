@@ -15,106 +15,86 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
             "outputPath": "dist/laurathedev",
             "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
+            "browser": "src/main.ts",
+            "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
-            "aot": true,
-            "assets": ["src/favicon.ico", "src/assets"],
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "src/favicon.ico",
+              {
+                "glob": "**/*",
+                "input": "src/assets",
+                "output": "assets"
+              }
+            ],
             "styles": ["src/styles.scss"],
             "scripts": []
           },
           "configurations": {
             "production": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
-                }
-              ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
-                  "maximumError": "10kb"
+                  "maximumWarning": "4kb",
+                  "maximumError": "8kb"
                 }
-              ]
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
             }
-          }
+          },
+          "defaultConfiguration": "production"
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "browserTarget": "laurathedev:build"
-          },
           "configurations": {
             "production": {
-              "browserTarget": "laurathedev:build:production"
+              "buildTarget": "laurathedev:build:production"
+            },
+            "development": {
+              "buildTarget": "laurathedev:build:development"
             }
-          }
+          },
+          "defaultConfiguration": "development"
         },
         "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "laurathedev:build"
-          }
+          "builder": "@angular-devkit/build-angular:extract-i18n"
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "src/test.ts",
-            "polyfills": "src/polyfills.ts",
+            "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "tsconfig.spec.json",
-            "karmaConfig": "karma.conf.js",
-            "assets": ["src/favicon.ico", "src/assets"],
-            "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
-              "src/styles.scss"
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "src/favicon.ico",
+              {
+                "glob": "**/*",
+                "input": "src/assets",
+                "output": "assets"
+              }
             ],
+            "styles": ["src/styles.scss"],
             "scripts": []
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "tsconfig.app.json",
-              "tsconfig.spec.json",
-              "e2e/tsconfig.json"
-            ],
-            "exclude": ["**/node_modules/**"]
-          }
-        },
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "laurathedev:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "laurathedev:serve:production"
-            }
           }
         }
       }
     }
   },
-  "defaultProject": "laurathedev"
+  "cli": {
+    "analytics": "83f6e5cc-6ec4-4131-b312-88021ba898a8"
+  }
 }

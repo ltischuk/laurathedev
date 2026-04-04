@@ -1,26 +1,42 @@
-<div fxLayout="column" fxLayoutAlign="center center">
-  <mat-card class="scrolling-content">
-    <mat-card-title class="center-text white-text">Hello!</mat-card-title>
-    <mat-card-content>
-      <div @fade class="white-text center-text about-text" ngClass="xlarge" ngClass.xs="large">
+<section class="about-section">
+  <div class="about-container animate-in">
+    <div class="section-header">
+      <span class="section-label">About Me</span>
+      <h2 class="section-title">Hello! 👋</h2>
+    </div>
+
+    <div class="glass-card">
+      <div class="about-bio">
         <p>
-          My name is Laura and I'm a passionate software developer, architect & leader!<br />
-          I have 12+ years of software development experience and I currently lead high-performing JS, Java and PHP development teams that create flagship $2B transaction global volume e-Commerce
-          software. If you recently bought a ticket to a theme park, museum or other attraction, chances are you have used the app I work on. Whether building a new application, publishing APIs
-          or tinkering with new tech, I inspire developers to be creative, solve critical problems with innovation, and deliver incredible products. I stay up to speed on the latest tech trends,
-          still code in my free time and am super passionate about software architecture. <br /><br />
-          I love being a thought partner with extremely talented developers, to build great things and of course, save the world....one line at a time 🤘
+          My name is Laura and I'm a passionate software developer, architect &amp; leader! I have 12+ years of
+          software development experience and I currently lead high-performing engineering teams that
+          create flagship $2B transaction global volume e-Commerce software. If you recently bought a ticket to a theme
+          park, museum or other attraction, chances are you have used the app I work on.
         </p>
         <p>
-          <img src="/assets/angular.svg" alt="Angular Image" />
-          <img src="/assets/react.svg" alt="React JS Image" />
-          <img src="/assets/nodejs.svg" alt="NodeJS Image" />
-          <img src="/assets/html5.png" alt="HTML 5 Image" />
-          <img src="/assets/csharp.png" alt="CSharp Image" />
-          <img src="/assets/java.png" alt="Java Image" />
-          <img src="/assets/php.svg" alt="PHP Image" />
+          Whether building a new application, publishing APIs or tinkering with new tech, I inspire developers to be
+          creative, solve critical problems with innovation, and deliver incredible products. I stay up to speed on the
+          latest tech trends, still code in my free time and am super passionate about software architecture.
+        </p>
+        <p>
+          I love being a thought partner with extremely talented developers, to build great things and of course, save
+          the world....one line at a time 🤘
         </p>
       </div>
-    </mat-card-content>
-  </mat-card>
-</div>
+
+      <div class="tech-section">
+        <h3 class="tech-title">Tech I Work With</h3>
+        <div class="tech-grid">
+          @for (item of tech; track item.name) {
+            <div class="tech-item">
+              <div class="tech-icon-wrap">
+                <img [src]="item.src" [alt]="item.alt" loading="lazy" />
+              </div>
+              <span>{{ item.name }}</span>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

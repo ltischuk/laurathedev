@@ -1,14 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { trigger, state, style, transition, animate } from '@angular/animations';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-contact',
+  standalone: true,
+  imports: [],
   templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.scss'],
-  animations: [trigger('fade', [transition('void => *', [style({ opacity: 0 }), animate('2000ms 500ms', style({ opacity: 1 }))])])],
+  styleUrl: './contact.component.scss',
 })
-export class ContactComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit(): void {}
-}
+export class ContactComponent {}
