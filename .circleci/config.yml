@@ -16,6 +16,11 @@ jobs:
       - run:
           name: Install dependencies and build
           command: npm ci && npm run build
+          when: always
+      - run:
+          name: Print npm debug log on failure
+          command: cat /home/circleci/.npm/_logs/*.log || true
+          when: on_fail
       - deploy:
           name: Deploy to AWS S3
           command: |
