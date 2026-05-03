@@ -16,7 +16,7 @@ jobs:
       - run:
           name: Install dependencies and build
           command: npm ci && npm run build
-      - deploy:
+      - run:
           name: Deploy to AWS S3
           command: |
             aws s3 sync ./dist/laurathedev/browser/ s3://whointheworldislaurawebsite/ --delete
