@@ -8,6 +8,4 @@ import { RouterLink } from '@angular/router';
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
-export class HomeComponent {
-  tags = ['Passionate Leader', 'Software Architect', 'Innovator'];
-}
+export class HomeComponent {}

@@ -1,3 +1,31 @@
+// ── Blueprint grid background ────────────────────────────────────────────────
+
+.blueprint-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(167, 139, 250, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(167, 139, 250, 0.03) 1px, transparent 1px),
+      radial-gradient(ellipse 80% 50% at 50% 40%, rgba(124, 58, 237, 0.08) 0%, transparent 65%);
+    background-size: 48px 48px, 48px 48px, 100% 100%;
+    animation: grid-fade 2s ease 0.4s both;
+  }
+}
+
+@keyframes grid-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+// ── Hero layout ──────────────────────────────────────────────────────────────
+
 .hero {
   min-height: 100vh;
   display: flex;
@@ -8,10 +36,12 @@
 }
 
 .hero-content {
-  max-width: 900px;
+  max-width: 860px;
   width: 100%;
   text-align: center;
 }
+
+// ── Shared entrance animation ─────────────────────────────────────────────────
 
 .animate-in {
   animation: slide-up-fade 0.9s cubic-bezier(0.16, 1, 0.3, 1) var(--delay, 0ms) both;
@@ -20,7 +50,7 @@
 @keyframes slide-up-fade {
   from {
     opacity: 0;
-    transform: translateY(32px);
+    transform: translateY(28px);
   }
   to {
     opacity: 1;
@@ -28,63 +58,164 @@
   }
 }
 
-.hero-eyebrow {
-  font-size: 1rem;
+// ── Eyebrow ───────────────────────────────────────────────────────────────────
+
+.eyebrow {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.8rem;
   font-weight: 600;
-  color: #a78bfa;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  margin: 0 0 1.25rem;
+  color: rgba(167, 139, 250, 0.65);
+  margin: 0 0 1.5rem;
 }
+
+.bracket {
+  color: rgba(167, 139, 250, 0.3);
+  font-weight: 400;
+}
+
+// ── Name — each character drops into place like a brick being set ─────────────
 
 .hero-name {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: clamp(3.5rem, 9vw, 7rem);
+  font-size: clamp(4rem, 12vw, 9rem);
   font-weight: 800;
-  line-height: 1.02;
-  margin: 0 0 2rem;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  margin: 0 0 1.75rem;
+}
+
+// Each letter carries a slice of the gradient so it reads as one
+// continuous sweep (white → purple → pink) across L-A-U-R-A.
+.char {
+  display: inline-block;
   background: linear-gradient(140deg, #fff 0%, #c4b5fd 45%, #ec4899 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  letter-spacing: -0.03em;
+  // 500% width → 5 slices; var(--i) steps 0–4 → positions 0% 25% 50% 75% 100%
+  background-size: 500% 100%;
+  background-position: calc(var(--i) * 25%) 0;
+  animation: char-settle 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) calc(180ms + var(--i) * 80ms) both;
 }
 
-.hero-tags {
+@keyframes char-settle {
+  from {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.55);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+// ── Declaration ───────────────────────────────────────────────────────────────
+
+.hero-declaration {
+  font-size: clamp(1rem, 2.2vw, 1.2rem);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.42);
+  line-height: 1.8;
+  margin: 0 0 2.5rem;
+  letter-spacing: 0.02em;
+}
+
+.declaration-accent {
+  color: rgba(255, 255, 255, 0.88);
+  font-weight: 500;
+}
+
+// ── Build structure — stories materialize from the ground up ──────────────────
+//
+// DOM order: 03 Vision (top) → 02 Structure → 01 Foundation (bottom)
+// Animation delays: 01 = 900ms (first in), 03 = 1250ms (last in)
+// Result: foundation appears first at the bottom, structure builds above it,
+// vision caps the top — a building assembled story by story.
+
+.build-structure {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin-bottom: 3rem;
+  margin: 0 auto 3rem;
+  max-width: 540px;
+  border: 1px solid rgba(167, 139, 250, 0.12);
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: left;
 }
 
-.tag {
+.structure-layer {
+  padding: 1rem 1.5rem;
+
+  // Lighter at top (Vision = aspirational), darker at bottom (Foundation = grounded)
+  &:nth-child(1) { background: rgba(124, 58, 237, 0.045); }
+  &:nth-child(2) { background: rgba(124, 58, 237, 0.07); }
+  &:nth-child(3) { background: rgba(124, 58, 237, 0.1); }
+}
+
+// Floor line draws left-to-right as each story materialises
+.layer-rule {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(167, 139, 250, 0.55) 35%,
+    rgba(236, 72, 153, 0.4) 65%,
+    transparent 100%
+  );
+  margin-bottom: 0.875rem;
+  transform-origin: left center;
+  // Inherits --delay from parent .structure-layer via CSS custom property cascade
+  animation: rule-draw 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--delay) both;
+}
+
+@keyframes rule-draw {
+  from {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  to {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+.layer-body {
+  display: flex;
+  align-items: baseline;
+  gap: 0.625rem;
+  flex-wrap: wrap;
+}
+
+.layer-num {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: rgba(167, 139, 250, 0.4);
+}
+
+.layer-label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #a78bfa;
+}
+
+.layer-sep {
+  color: rgba(255, 255, 255, 0.18);
+  margin: 0 0.1rem;
+}
+
+.layer-desc {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1rem;
   font-weight: 500;
-  font-style: italic;
-  letter-spacing: 0.01em;
-  padding: 0.5rem 0;
-
-  &:nth-child(1) {
-    color: #c4b5fd;
-  }
-
-  &:nth-child(2) {
-    color: rgba(255, 255, 255, 0.7);
-  }
-
-  &:nth-child(3) {
-    color: #f9a8d4;
-  }
-
-  &:not(:last-child)::after {
-    content: '';
-    display: block;
-    width: 36px;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(167, 139, 250, 0.5), transparent);
-    margin: 0.375rem auto 0;
-  }
+  color: rgba(255, 255, 255, 0.88);
+  letter-spacing: -0.01em;
 }
 
 .hero-actions {
@@ -179,5 +310,13 @@
 
   .hero-actions {
     gap: 0.75rem;
+  }
+
+  .build-structure {
+    max-width: 100%;
+  }
+
+  .layer-desc {
+    font-size: 0.9375rem;
   }
 }

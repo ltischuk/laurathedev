@@ -8,31 +8,39 @@
     <div class="glass-card">
       <div class="about-bio">
         <p>
-          My name is Laura and I'm a passionate software developer, architect &amp; leader! I have 12+ years of
-          software development experience and I currently lead high-performing engineering teams that
-          create flagship $2B transaction global volume e-Commerce software. If you recently bought a ticket to a theme
-          park, museum or other attraction, chances are you have used the app I work on.
+          My name is Laura and I'm a passionate software developer, architect &amp; leader. I have 15+ years of
+          software development experience and currently lead high-performing engineering teams that create flagship
+          e-Commerce software processing over $2B in transaction volume globally. If you recently bought a ticket
+          to a theme park, museum, or other attraction, chances are you have used the apps I build.
         </p>
         <p>
-          Whether building a new application, publishing APIs or tinkering with new tech, I inspire developers to be
-          creative, solve critical problems with innovation, and deliver incredible products. I stay up to speed on the
-          latest tech trends, still code in my free time and am super passionate about software architecture.
+          I treat every product I ship as my own. I work relentlessly with stakeholders to understand problems and
+          strategy from all perspectives — stepping outside the role of "just an engineer" to dive deep into market
+          research, understand the competitive landscape, and identify the emerging trends that should drive
+          engineering focus.
         </p>
         <p>
-          I love being a thought partner with extremely talented developers, to build great things and of course, save
-          the world....one line at a time 🤘
+          Today's engineering landscape is changing at an extraordinary pace. I have been actively following and
+          applying the latest in AI engineering pipelines — spec-driven development, harness design for optimum AI
+          output, and strong architectural principles that allow teams to deliver with speed without compromising
+          quality or performance. My current go-to AI thought-partner tools are Claude Code and Opencode, and I
+          have experimented extensively with building custom AI assistance using the Hermes agent framework. That
+          said, I believe now more than ever that a solid foundation in security, reliability, and scalability is
+          what separates great systems from merely fast ones.
         </p>
       </div>
 
       <div class="tech-section">
-        <h3 class="tech-title">Tech I Work With</h3>
-        <div class="tech-grid">
-          @for (item of tech; track item.name) {
-            <div class="tech-item">
-              <div class="tech-icon-wrap">
-                <img [src]="item.src" [alt]="item.alt" loading="lazy" />
+        <h3 class="tech-title">Areas of Ownership</h3>
+        <div class="domain-grid">
+          @for (domain of domains; track domain.category) {
+            <div class="domain-card">
+              <span class="domain-category">{{ domain.category }}</span>
+              <div class="skill-tags">
+                @for (item of domain.items; track item) {
+                  <span class="skill-tag">{{ item }}</span>
+                }
               </div>
-              <span>{{ item.name }}</span>
             </div>
           }
         </div>
