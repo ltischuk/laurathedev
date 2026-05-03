@@ -35,12 +35,40 @@ nav {
     font-family: 'Space Grotesk', sans-serif;
     font-size: 1.25rem;
     font-weight: 700;
+    letter-spacing: -0.01em;
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0;
+  }
+
+  .logo-syntax {
+    font-weight: 400;
+    color: rgba(167, 139, 250, 0.5);
+    transition: color 0.25s ease;
+  }
+
+  .logo-name {
     background: linear-gradient(135deg, #c4b5fd, #ec4899);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    letter-spacing: -0.01em;
   }
+
+  .logo-cursor {
+    color: #a78bfa;
+    font-weight: 300;
+    margin-left: 1px;
+    animation: cursor-blink 1.1s step-end infinite;
+  }
+
+  &:hover .logo-syntax {
+    color: rgba(167, 139, 250, 0.85);
+  }
+}
+
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
 .nav-links {
