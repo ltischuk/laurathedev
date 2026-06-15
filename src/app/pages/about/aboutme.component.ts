@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 interface TechDomain {
   category: string;
@@ -10,6 +10,7 @@ interface TechDomain {
   standalone: true,
   imports: [],
   templateUrl: './aboutme.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './aboutme.component.scss',
 })
 export class AboutmeComponent {
